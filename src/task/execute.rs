@@ -23,7 +23,7 @@ pub fn execute_task(function: &str, arg_list: Option<Vec<String>>) -> String {
     match function.to_ascii_lowercase().as_ref() {
         "reset" => color::reset(),
 
-        "text_color" => {
+        "text_color" | "color" => {
             if let Some(args) = arg_list {
                 return color::text(&args[0]);
             }
@@ -33,7 +33,7 @@ pub fn execute_task(function: &str, arg_list: Option<Vec<String>>) -> String {
             String::new()
         }
 
-        "text_rgb" => {
+        "text_rgb" | "rgb" => {
             if let Some(args) = arg_list {
                 emit_warning!(if args.len() < 3; "Expected at least 3 arguments for function 'text_rgb'");
 
@@ -66,7 +66,7 @@ pub fn execute_task(function: &str, arg_list: Option<Vec<String>>) -> String {
             }
         }
 
-        "background_color" => {
+        "background_color" | "background" => {
             if let Some(args) = arg_list {
                 return color::background(&args[0]);
             }
