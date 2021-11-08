@@ -106,7 +106,7 @@ pub fn execute_task(function: &str, arg_list: Option<Vec<String>>) -> String {
 
         "current_working_dir" | "cwd" => current_working_dir(),
 
-        "git_branch_name" => match branch::get_name() {
+        "branch" | "git_branch" | "branch_name" | "git_branch_name" => match branch::get_name() {
             Some(branch_name) => match arg_list {
                 Some(args) => {
                     let mut open = args.get(0).unwrap_or(&String::new()).to_string();
