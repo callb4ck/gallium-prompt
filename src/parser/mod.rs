@@ -52,7 +52,7 @@ pub fn parse_and_exec(input: String) -> (String, Vec<(String, String)>) {
             let task_result_list_arc = Arc::new(Mutex::new(task_result_list));
 
             for mat in parser.unwrap_or_else(|_| {
-                eprintln!("[FATAL]: Parsing error, perhaps you did (arg1 arg2) instead of (arg1, arg2)?\nIf you really wanted to put a whitespace please use \\s instead");
+                eprintln!("[FATAL]: Parsing error, perhaps you did (arg1 arg2) instead of (arg1, arg2)?\nIf you really wanted to put a whitespace in an argument please use '\\%s' for spaces and '\\%t' for tabs instead");
                 exit(1)
             }).into_iter() {
                 let mut second_threads: Vec<JoinHandle<_>> = vec![];
@@ -70,7 +70,7 @@ pub fn parse_and_exec(input: String) -> (String, Vec<(String, String)>) {
                             let mut args: Vec<_> = vec![];
 
                             for arg in arg_list {
-                                args.push(arg.as_span().as_str().to_string().replace("\\s", " "));
+                                args.push(arg.as_span().as_str().to_string().replace("\\%t", "\t").replace("\\%s", " "));
                             }
                             Some(args)
                         }

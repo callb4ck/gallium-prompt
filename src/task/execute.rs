@@ -100,11 +100,27 @@ pub fn execute_task(function: &str, arg_list: Option<Vec<String>>) -> String {
             }
         }
 
+        "effect" => {
+            if let Some(arg_list) = arg_list {
+                let mut effect_list = String::new();
+
+                for arg in arg_list {
+                    effect_list.push_str(&color::effect(&arg))
+                }
+
+                return effect_list;
+            }
+
+            emit_warning!("Expected at least 1 argument for function 'effect'");
+            String::new()
+
+        }
+
         "get_user" | "user" | "username" => get_user(),
 
         "get_host" | "host" | "hostname" => get_host(),
 
-        "current_working_dir" | "cwd" => current_working_dir(),
+        "current_working_dir" | "cwd" | "pwd" => current_working_dir(),
 
         "branch" | "git_branch" | "branch_name" | "git_branch_name" => match branch::get_name() {
             Some(branch_name) => match arg_list {
