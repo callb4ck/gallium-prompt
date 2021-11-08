@@ -91,8 +91,8 @@ You can change some settings trough the use of environment variables
 
 | Env var                       | Description                                                                                                    |
 | -----------------------------:|:-------------------------------------------------------------------------------------------------------------- |
-| `GALLIUMPROMPT_NO_WARNING`    | If this variable is set gallium will suppress every warning message (fatal error ones will still be displayed) |
-| `GALLIUMPROMPT_SINGLE_THREAD` | If this variable set gallium will only use one thread (which is not default behaviour)                         |
+| `GALLIUMPROMPT_NO_WARNING`    | If this variable is set, gallium will suppress every warning message (fatal error ones will still be displayed)|
+| `GALLIUMPROMPT_SINGLE_THREAD` | If this variable is set, gallium will only use one thread (which is not default behaviour)                     |
 
 
 
