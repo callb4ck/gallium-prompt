@@ -1,6 +1,6 @@
 arg = {(!")" ~ !"," ~ !SEPARATOR ~ ANY)*}
 
-arg_list = {SEPARATOR* ~ arg ~ SEPARATOR* ~ ("," ~ SEPARATOR* ~ arg)*}
+arg_list = {SEPARATOR* ~ arg ~ SEPARATOR* ~ ("," ~ SEPARATOR* ~ arg ~ SEPARATOR*)*}
 
 function = { (!"(" ~ !"]" ~ !"," ~ !";" ~ !SEPARATOR ~ ANY)* }
 
@@ -8,4 +8,4 @@ task = { SEPARATOR* ~ function ~ ("(" ~ arg_list ~ ")")* ~ SEPARATOR* }
 
 sub = { "%[" ~ task ~ ((","|";") ~ task)* ~ "]" }
 
-line = _{(!"%[" ~ ANY)* ~ sub ~ ((ANY ~ !"[")* ~ sub)*}
+line = _{(!"%[" ~ ANY)* ~ sub? ~ ((ANY ~ !"[")* ~ sub)*}
