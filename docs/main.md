@@ -1,16 +1,10 @@
 # Syntax
 
-
-
 ## Function
 
 A function is the identifier for what you're executing:
 
 Ex: `text_color`, `git_branch_name`
-
-
-
-
 
 ## Arguments
 
@@ -23,8 +17,6 @@ Ex: `text_rgb(37, 52, 81)`
 `text_rgb` is the function
 
 A function may have optional arguments and some may not require them at all.
-
-
 
 ### Note
 
@@ -40,19 +32,11 @@ And `exec(printf, hello\tworld)` should be written as
 
 `exec(printf, hello\%tworld)`.
 
-
-
-
-
 ## Task
 
 A task is the function and its arguments (if the function requires them)
 
 Ex: `git_branch_name` and `text_rgb()` are bot tasks.
-
-
-
-
 
 ## Sub
 
@@ -62,19 +46,13 @@ Ex: `%[text_rgb(37,52,81);git_branch_name]` is a sub
 
 `%[user]` is also a sub.
 
-
-
 ### Note
 
 Tasks in a sub can be divided both using `;` and `,`.
 
 So `%[func1;func2]` and `%[func1,func2]` are both valid. 
 
-
-
 ---
-
-
 
 # Available functions
 
@@ -105,11 +83,38 @@ This is a list of currently available functions, their aliases and the arguments
 
 
 
+# Environment variables
+
+You can change some settings trough the use of environment variables
+
+
+
+| Env var                       | Description                                                                                                    |
+| -----------------------------:|:-------------------------------------------------------------------------------------------------------------- |
+| `GALLIUMPROMPT_NO_WARNING`    | If this variable is set gallium will suppress every warning message (fatal error ones will still be displayed) |
+| `GALLIUMPROMPT_SINGLE_THREAD` | If this variable set gallium will only use one thread (which is not default behaviour)                         |
+
+
+
+## Note
+
+Single thread could boost performances in only a couple of cases:
+
+* When nothing spawned by `exec` or `exec_strip` takes a high amout of time to complete execution;
+
+* When the system has a low amount of CPU cores.
+
+
+
+---
+
+
+
+
+
 # Usage
 
 Simply pass the template string as an argument to gallium.
-
-
 
 Ex: 
 
