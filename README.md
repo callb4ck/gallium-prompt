@@ -18,4 +18,4 @@ You can find the docs [here](./docs/main.md). `<=`
 
 # How to install
 
-Simply execute the `install.sh` script in the root of the project.
+Simply execute the `install.sh` script in the root of the project to install automatically or execute the `build.sh` script to manually build the executable.
