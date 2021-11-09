@@ -1,4 +1,4 @@
-# Optional arguments of `git_branch_name`
+# Optional arguments for `git_branch_name`
 
 ## No arguments
 

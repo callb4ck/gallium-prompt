@@ -55,7 +55,7 @@ pub fn execute_task(function: &str, arg_list: Option<Vec<String>>) -> String {
                     "bold" | "true" => true,
                     "normal" | "false" => false,
                     _ => {
-                        emit_warning!("(4th optarg) Optional argument 'bold' must be set to normal/false or bold/true");
+                        emit_warning!("(4th optarg) Optional argument 'Bold' must be set to normal/false or bold/true");
                         false
                     }
                 };
@@ -113,14 +113,28 @@ pub fn execute_task(function: &str, arg_list: Option<Vec<String>>) -> String {
 
             emit_warning!("Expected at least 1 argument for function 'effect'");
             String::new()
-
         }
 
         "get_user" | "user" | "username" => get_user(),
 
         "get_host" | "host" | "hostname" => get_host(),
 
-        "current_working_dir" | "cwd" | "pwd" => current_working_dir(),
+        "current_working_dir" | "cwd" | "pwd" => {
+            if let Some(args) = arg_list {
+                let expand = args.get(0).unwrap_or(&"normal".to_string()).to_string();
+
+                return current_working_dir(match expand.as_ref() {
+                    "expand" | "true" => true,
+                    "normal" | "false" => false,
+                    _ => {
+                        emit_warning!("(1th optarg) Optional argument 'Expand' must be set to normal/false or expand/true");
+                        false
+                    }
+                });
+            }
+
+            current_working_dir(false)
+        }
 
         "branch" | "git_branch" | "branch_name" | "git_branch_name" => match branch::get_name() {
             Some(branch_name) => match arg_list {

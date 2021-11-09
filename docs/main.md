@@ -69,13 +69,13 @@ This is a list of currently available functions, their aliases and the arguments
 | [`text_rgb`](./rgb_colors.md)        | `rgb`                                 | `R`, `G`, `B`, ?`Bold`                | Give text the desired rgb color                                                 |
 | [`background_color`](./colors.md)    | `background`                          | `Color`                               | Give background the desired color                                               |
 | [`background_rgb`](./rgb_colors.md)  |                                       | `R`, `G`, `B`                         | Give background the desired rgb color                                           |
-| [`effect`](./effects.md)             |                                       | *`Effect`                             | Set the desired effects                                                         |
+| [`effect`](./effects.md)             |                                       | \*`Effect`                            | Set the desired effects                                                         |
 | `get_user`                           | `user`, `username`                    |                                       | Get username (USER env var)                                                     |
 | `get_host`                           | `host`, `hostname`                    |                                       | Get hostname (contents of /etc/hostname)                                        |
-| `current_working_dir`                | `cwd`, `pwd`                          |                                       | Get current working directory                                                   |
+| [`current_working_dir`](./cwd.md)    | `cwd`, `pwd`                          | ?`Expand`                             | Get current working directory                                                   |
 | [`git_branch_name`](./git_branch.md) | `branch`, `git_branch`, `branch_name` | ?`Open separator`, ?`Close separator` | Get current git branch name (if in a git repo)                                  |
-| `exec`                               |                                       | `Command`, ?*`Arguments`              | Execute command and print output                                                |
-| `exec_strip`                         |                                       | `Command`, ?*`Arguments`              | Execute command and print output forcing the removal of any trailing whitespace |
+| `exec`                               |                                       | `Command`, ?\*`Arguments`             | Execute command and print output                                                |
+| `exec_strip`                         |                                       | `Command`, ?\*`Arguments`             | Execute command and print output forcing the removal of any trailing whitespace |
 
 
 

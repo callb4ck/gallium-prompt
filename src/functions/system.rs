@@ -20,17 +20,19 @@ pub fn get_host() -> String {
 }
 
 #[inline]
-pub fn current_working_dir() -> String {
+pub fn current_working_dir(expand: bool) -> String {
     let path = if let Ok(path) = current_dir() {
         path.to_str().unwrap_or("no_valid_unicode").to_string()
     } else {
         "unknown_path".to_string()
     };
 
-    if let Ok(user) = var("USER") {
-        let homedir = "/home/".to_string() + &user;
-        if path.starts_with(&homedir) {
-            return path.replace(&homedir, "~");
+    if !expand {
+        if let Ok(user) = var("USER") {
+            let homedir = "/home/".to_string() + &user;
+            if path.starts_with(&homedir) {
+                return path.replace(&homedir, "~");
+            }
         }
     }
 
